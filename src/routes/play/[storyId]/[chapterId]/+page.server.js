@@ -1,5 +1,11 @@
+import { redirect } from '@sveltejs/kit';
+
 export async function load({ params, locals }) {
      /* eslint-disable no-unused-vars */
+    if(!locals.session){
+        throw redirect(302, '/login')
+    }
+
     const { data } = await locals.sb.from('users').select('plays').eq('id', locals.session.user.id).limit(1).single();
 
     let { plays } = data
