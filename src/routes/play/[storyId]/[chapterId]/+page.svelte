@@ -136,8 +136,6 @@
 
 </script>
 
-<!-- <svelte:window bind:innerHeight={windowHeight} bind:innerWidth={windowWidth}/> -->
-
 <div id="game-border" class="unreset"
     bind:clientHeight={windowHeight}
     bind:clientWidth={windowWidth}>
