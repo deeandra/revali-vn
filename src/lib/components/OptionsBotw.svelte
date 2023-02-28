@@ -12,19 +12,6 @@
         })
     }
 
-    let refHeight, fontSize;
-
-    let windowHeight, windowWidth;
-    let aspectRatio = 16/9;
-
-    $: if(windowWidth >= aspectRatio*windowHeight){
-        refHeight = 0.9*windowHeight*0.16;
-    }else{
-        refHeight = (1/aspectRatio)*0.9*windowWidth*0.16;
-    }
-
-    $: fontSize = refHeight/5.2;
-
 </script>
 
 
@@ -32,7 +19,6 @@
 <div class="wrapper__options">
     {#each options as option (option.id)}
         <div class="option" 
-        style:font-size="{fontSize}px"
         on:click={dispatchNext(option.nextId)}>
             {option.text}
         </div>
@@ -41,7 +27,6 @@
 {/if}
 
 
-<svelte:window bind:innerHeight={windowHeight} bind:innerWidth={windowWidth}/>
 
 <style>
     .wrapper__options {
@@ -66,8 +51,7 @@
         max-width: 18%;
         position: relative;
         font-family: "Roboto", sans-serif;
-        /* font-weight: 600; */
-        font-size: 14px;
+        font-size: 20px;
         color: white;
         margin: 0.7% 0 0 0;
         padding: 0 2% 0 2%;

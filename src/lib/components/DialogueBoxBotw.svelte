@@ -10,37 +10,21 @@
     }
 
     export let charName = "", dialogue = "";
-    let refHeight, fontSize;
-
-    let windowHeight, windowWidth;
-    let aspectRatio = 16/9;
-
-    $: if(windowWidth >= aspectRatio*windowHeight){
-        refHeight = 0.9*windowHeight*0.16;
-    }else{
-        refHeight = (1/aspectRatio)*0.9*windowWidth*0.16;
-    }
-
-    $: fontSize = refHeight/5.2;
 
 </script>
 
-<svelte:window bind:innerHeight={windowHeight} bind:innerWidth={windowWidth}/>
 
 {#if dialogue}
 <div class="wrapper__textbox" id="outer-div"
-    on:click={dispatchNext}
-    bind:clientHeight={refHeight}>
+    on:click={dispatchNext}>
     {#if charName}
-        <p class="char-name" 
-            style:font-size="{0.85*fontSize}px"
-            style:top="{-0.4*refHeight}px">
+        <p class="char-name">
             {charName}
         </p>
     {/if}
     <img class="textbox" src="/textBox.svg" alt="Text Box for Game Dialogue"/>
     <div class="wrapper__text">
-        <p class="dialog-text" style:font-size="{fontSize}px">
+        <p class="dialog-text">
             {@html dialogue}
         </p>
     </div>
@@ -79,18 +63,18 @@
 
     .char-name {
         color: white;
-        /* font-size: 1.5vw; */
+        font-size: 20px;
         font-weight: bold;
         text-shadow: 0px 0px 2px black, 0px 0px 4px black, 0px 0px 6px black;
         margin-left: 10%;
         position: absolute;
-        transform: translateY(50%);
-        /* top: -25px; */
+        /* transform: translateY(50%); */
+        top: -36px;
     }
 
     .dialog-text {
         color: white;
-        /* font-size: 14px; */
+        font-size: 24px;
         font-weight: bold;
         max-width: 70%;
         max-height: 100%;
